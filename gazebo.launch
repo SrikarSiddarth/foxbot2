@@ -1,0 +1,41 @@
+<launch>
+    <param name="robot_description" command="xacro --inorder '$(find foxbot2)/foxbot2.urdf'" />
+
+
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
+    <arg name="z" default="0.5"/>
+    <arg name="debug" default="false"/>
+	<arg name="paused" default="true"/>
+	<arg name="gui" default="true"/>
+	<arg name="verbose" default="false"/>
+	<arg name="world" default="$(find autosurvey)/worlds/basic.world" />
+
+
+	<!-- include gazebo launcher -->
+	<include file="$(find gazebo_ros)/launch/empty_world.launch" >
+		
+		<arg name="world_name" value="$(arg world)"/>
+		<arg name="debug" value="$(arg debug)"/>
+		<arg name="gui" value="$(arg gui)"/>
+		<arg name="verbose" value="$(arg verbose)"/>
+		<arg name="paused" value="$(arg paused)"/>
+	</include>
+
+
+	<node name="spawn_udrf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model foxbot2 -x $(arg x) -y $(arg y) -z $(arg z)" />
+
+	<!-- Load joint controller configurations from YAML file to parameter server -->
+  	<rosparam file="$(find foxbot2)/foxbot2_control.yaml" command="load"/>
+
+  	<!-- load the controllers -->
+  	<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="true"
+    	output="screen" ns="/foxbot2" args="right_front_wheel_controller left_front_wheel_controller right_back_wheel_controller left_back_wheel_controller joint_state_controller"/>
+
+  	<!-- convert joint states to TF transforms for rviz, etc -->
+  	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+   		respawn="false" output="screen">
+    <remap from="/joint_states" to="/foxbot2/joint_states" />
+  	</node>
+
+</launch>
