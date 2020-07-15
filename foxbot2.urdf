@@ -169,45 +169,4 @@
       </plugin>
    </sensor>  
    </gazebo>
-
-  <!-- <transmission name="trans_1">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="joint_right_back_wheel">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="right_back_wheel_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-  </transmission>
-  <transmission name="trans_2">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="joint_left_back_wheel">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="left_back_wheel_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-  </transmission>
-  <transmission name="trans_3">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="joint_right_front_wheel">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="right_front_wheel_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-  </transmission>
-  <transmission name="trans_4">
-      <type>transmission_interface/SimpleTransmission</type>
-      <joint name="joint_left_front_wheel">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-      </joint>
-      <actuator name="left_front_wheel_motor">
-        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-      </actuator>
-  </transmission> -->
 </robot>
